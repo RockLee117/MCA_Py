@@ -1,0 +1,47 @@
+Recommend IGNORING this file and rather looking at loadAssay.txt
+
+In R studio project/R file:
+1. read the .rds dataset
+2. pre process the data set if needed (only need to look at certain genes)
+3. create seurat object
+4. normalize the seurat object's data
+5. scale the seurat object's data
+6. save seurat object as a .h5Seurat file
+7. convert .h5Seurat to a .h5ad file named "BaronScaledNorm.h5ad"
+8. look in directory of the R project or where your R file is located and find the .h5ad file and copy and paste it into 
+directory of your python files
+9. In python file, import scanpy and use scanpy to read the .h5ad file and store data into an AnnData Object
+10. Pass the variable scaled_data_df to RunMCA() instead
+(Step 9 done for you in main.py but must uncomment the code)
+
+R example code:
+
+if(!require("tidyverse")) install.packages("tidyverse")
+if(!require("ggpubr")) install.packages("ggpubr")
+devtools::install_github("RausellLab/CelliD", ref = "legacy")
+library(CellID) # Note that the legacy version is called CellID and not CelliD
+
+library(CelliD)
+## Warning: replacing previous import 'data.table::shift' by 'tictoc::shift' when
+## loading 'CelliD'
+library(tidyverse)
+library(ggpubr) #library for plotting
+
+BaronMatrix   <- readRDS(url("https://storage.googleapis.com/cellid-cbl/BaronMatrix.rds"))
+BaronMetaData <- readRDS(url("https://storage.googleapis.com/cellid-cbl/BaronMetaData.rds"))
+
+data("HgProteinCodingGenes")
+BaronMatrixProt <- BaronMatrix[rownames(BaronMatrix) %in% HgProteinCodingGenes,]
+Baron <- CreateSeuratObject(counts = BaronMatrixProt, project = "Baron", min.cells = 5, meta.data = BaronMetaData)
+Baron <- NormalizeData(Baron)
+Baron <- ScaleData(Baron, features = rownames(Baron))
+
+# this is to turn seurat object into readable object (.h5) in python
+install.packages("remotes")
+remotes::install_github("mojaveazure/seurat-disk")
+library(Seurat)
+library(SeuratDisk)
+# store seurat object into a .h5Seurat file
+SaveH5Seurat(Baron, filename = "Baron.h5Seurat")
+# Turn .h5Seurat into a .h5ad
+Convert("Baron.h5Seurat", dest="h5ad")
