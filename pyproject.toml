@@ -8,15 +8,15 @@ version = "0.0.1"
 authors = [
   { name="Ramin Mohammadi", email="rammoh5346@gmail.com" },
 ]
-description = "Performs multiple correspondence analysis on input 2D NUMERICAL Tabular Data that is based on the MCA performed in the Cellid package: https://github.com/RausellLab/CelliD"
+description = "Performs multiple correspondence analysis on input 2D NUMERICAL Tabular Data stored in a pandas data frame."
 readme = "README.md"
 requires-python = ">=3.11"
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
+    "License :: GNU License",
     "Operating System :: OS Independent",
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/pypa/sampleproject"
-"Bug Tracker" = "https://github.com/pypa/sampleproject/issues"
+"Homepage" = "https://github.com/RockLee117/MCA_Py"
+"Bug Tracker" = "https://github.com/RockLee117/MCA_Py/issues"

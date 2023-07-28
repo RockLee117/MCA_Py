@@ -2,8 +2,26 @@ import numpy as np
 import pandas as pd
 import mca_steps, csv, time
 
-# mca.py contains RunMCA() function which performs MCA (multiple correspondence analysis) on input data
 
+"""
+Ramin Mohammadi. mca.py contains the RunMCA() function which performs MCA (multiple correspondence analysis) on input data
+    Copyright (C) 2023  Ramin Mohammadi
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses """
+    
+    
+    
 
 # MCA class responsible for holding the results of MCA mainly being the cell and gene coordinates which are pandas dataframes each containing a 2D matrix of numerical values
 # creating a new MCA object by using it's constructor creates two new pandas data frames for the cell and gene coordinates

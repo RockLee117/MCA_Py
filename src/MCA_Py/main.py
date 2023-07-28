@@ -3,9 +3,27 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import scanpy, mca, dist
 
-# must pip install scanpy, numpy, pandas, matplotlib
+"""
+Ramin Mohammadi. main.py: File showing how to use functions in MCA package. Shows example of reading data from csv files and storing them in a pandas data frame, calling RunMCA() to perform MCA (Multiple Correspondence Analysis), and calling GetDistances() to get distance between resulting  coordinates from MCA.
+    Copyright (C) 2023  Ramin Mohammadi
 
-# main.py: Read data from csv files created in R and call RunMCA() in this file to perform MCA (Multiple Correspondence Analysis), and call GetDistances() to get distance between resulting gene and cell coordinates from MCA. 
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses """
+
+
+
+
+# must pip install scanpy, numpy, pandas, matplotlib
 
 
 ##### if wanting to use scaled data (from .h5ad file) ##### -> Refer to loadingInputData.txt to get and use the scaled data from a .rds dataset stored in a seurat object, BUT this data does not seem to be used when running in R (rather the assay of the data is used) so IGNORE THIS COMMENTED STEP

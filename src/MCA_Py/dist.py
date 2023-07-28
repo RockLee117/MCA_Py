@@ -2,6 +2,26 @@ import numpy as np
 import pandas as pd
 
 """
+Ramin Mohammadi. dist.py responsible for functions related to finding distances between the coordinate matrices resulted from MCA calculations.
+    Copyright (C) 2023  Ramin Mohammadi
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses """
+
+
+
+
+"""
 Small intermediate function for euclidean distance calculation between
 MCA feature coordinates and cell coordinates. Due to MCA pseudo barycentric relationship, 
 the closer a gene g is to a cell c, the more specific to such a cell it can be considered
