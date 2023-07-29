@@ -39,7 +39,6 @@ Ramin Mohammadi. main.py: File showing how to use functions in MCA package. Show
 # (you will locally have to create the .csv files yourself using the step described in loadAssay.txt due to the large size of the datasets and the .csv files generated)
 
 # Assay of dataset
-# csv contains correct values and correct shape, just missing row names
 assay_df = pd.read_csv('Baron_assay_data.csv') 
 # row names of assay
 row_names = pd.read_csv('Baron_assay_rownames.csv')

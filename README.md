@@ -34,8 +34,31 @@ import numpy as np <br>
 import matplotlib.pyplot as plt <br>
 import MCA_Py, csv <br>
 
-# Assuming
+#Step 1: Store input into pandas dataframe<br>
+<br># Assuming using Baron dataset and looked at loadAssay.txt in the doc folder to see how to get necessary csv files 
+<br># Assay of dataset 
+<br>assay_df = pd.read_csv('Baron_assay_data.csv')  # read_csv contains string path to csv file
+<br># row names of assay 
+<br>row_names = pd.read_csv('Baron_assay_rownames.csv') 
+<br># set row names to data frame's row names 
+<br>assay_df.index = np.ndarray.flatten(row_names.values) 
 
+<p>#Step2: Perform MCA on input data</p>
+# result is an object containing: <br>
+    # featuresCoordinates: pandas data frame where rows are genes and columns are nmcs (default value for nmcs is 50) different dimensions <br>
+    # cellsCoordinates: pandas data frame where rows are cells and columns are nmcs (default value for nmcs is 50) different dimensions <br>
+    # stdev: numpy array containing the singular values created during MCA when performing Singular Value Decomposition <br>
+result = MCA_Py.RunMCA(assay_df) <br>
 
+<br>#Optionally plot coordinates. Here the first 2 dimensions/columns are being plotted
+<br>plt.scatter(result.featuresCoordinates.iloc[:, 0], result.featuresCoordinates.iloc[:, 1], label='Genes(features) Coordinates', c='blue', marker='x')
+<br>plt.scatter(result.cellsCoordinates.iloc[:, 0], result.cellsCoordinates.iloc[:, 1], label='Cells Coordinates', c='red', marker='o', alpha=0.5)
+<br># Add labels and legend
+<br>plt.xlabel('MCA_1')
+<br>plt.ylabel('MCA_2')
+<br>plt.title('MCA Scatter Plot')
+<br>plt.legend()
+<br># Show the plot
+<br>plt.show()
 
-
+<img src="https://github.com/RockLee117/Images/blob/main/Python_EntireBaron.png" width=100>
