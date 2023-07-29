@@ -27,6 +27,8 @@ Feel free to refer to main.py in the MCA_Py github to see an example of performi
 3. Optionally, you can graph the coordinates using matplotlib on a scatterplot, but must pick only 2 of the (default) 50 dimensions. Choose one column in both of the coordinate data frames to be the x and another column to be the y. Ideally plot the first column as the x and the second column as the y.
 4. Optionally, you can find the distances between the coordinates of the 2 data frames by calling GetDistances and passing in the object returned from RunMCA. The result will be a pandas data frame containing the distances.
 
+## Example
+
 Here is an example of using the MCA package on the Baron pancreas single-cell RNA-seq data set: <br>
 
 import pandas as pd <br>
@@ -41,7 +43,9 @@ import MCA_Py, csv <br>
 <br># row names of assay 
 <br>row_names = pd.read_csv('Baron_assay_rownames.csv') 
 <br># set row names to data frame's row names 
-<br>assay_df.index = np.ndarray.flatten(row_names.values) 
+<br>assay_df.index = np.ndarray.flatten(row_names.values)
+
+<img src="https://github.com/RockLee117/Images/blob/main/MCAOutputImages/input.png" width=500>
 
 <p>#Step2: Perform MCA on input data</p>
 # result is an object containing: <br>
@@ -50,7 +54,12 @@ import MCA_Py, csv <br>
     # stdev: numpy array containing the singular values created during MCA when performing Singular Value Decomposition <br>
 result = MCA_Py.RunMCA(assay_df) <br>
 
-<br>#Optionally plot coordinates. Here the first 2 dimensions/columns are being plotted
+<img src="https://github.com/RockLee117/Images/blob/main/MCAOutputImages/mca_output.png" width=500>
+<img src="https://github.com/RockLee117/Images/blob/main/MCAOutputImages/mca_output.png" width=500>
+<img src="https://github.com/RockLee117/Images/blob/main/MCAOutputImages/mca_singularvals.png" width=500>
+
+
+<br>#Step3: Optionally plot coordinates. Here the first 2 dimensions/columns are being plotted
 <br>plt.scatter(result.featuresCoordinates.iloc[:, 0], result.featuresCoordinates.iloc[:, 1], label='Genes(features) Coordinates', c='blue', marker='x')
 <br>plt.scatter(result.cellsCoordinates.iloc[:, 0], result.cellsCoordinates.iloc[:, 1], label='Cells Coordinates', c='red', marker='o', alpha=0.5)
 <br># Add labels and legend
@@ -62,3 +71,8 @@ result = MCA_Py.RunMCA(assay_df) <br>
 <br>plt.show()
 
 <img src="https://github.com/RockLee117/Images/blob/main/Python_EntireBaron.png" width=500>
+
+<br>#Step4: Optionally calculate the distances
+<br>CellGeneDistances = MCA_Py.GetDistances(result)
+
+<img src="https://github.com/RockLee117/Images/blob/main/MCAOutputImages/dist.png" width=500>
