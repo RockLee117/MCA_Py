@@ -61,4 +61,4 @@ result = MCA_Py.RunMCA(assay_df) <br>
 <br># Show the plot
 <br>plt.show()
 
-<img src="https://github.com/RockLee117/Images/blob/main/Python_EntireBaron.png" width=300>
+<img src="https://github.com/RockLee117/Images/blob/main/Python_EntireBaron.png" width=500>
