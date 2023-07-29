@@ -55,7 +55,6 @@ import MCA_Py, csv <br>
 result = MCA_Py.RunMCA(assay_df) <br>
 
 <img src="https://github.com/RockLee117/Images/blob/main/MCAOutputImages/mca_output.png" width=500>
-<img src="https://github.com/RockLee117/Images/blob/main/MCAOutputImages/mca_output.png" width=500>
 <img src="https://github.com/RockLee117/Images/blob/main/MCAOutputImages/mca_singularvals.png" width=500>
 
 

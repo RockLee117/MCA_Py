@@ -18,6 +18,7 @@ Ramin Mohammadi. dist.py responsible for functions related to finding distances 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses """
 
+# Reference: https://github.com/RausellLab/CelliD
 
 
 

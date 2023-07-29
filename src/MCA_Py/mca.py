@@ -19,6 +19,7 @@ Ramin Mohammadi. mca.py contains the RunMCA() function which performs MCA (multi
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses """
+#Reference: https://github.com/RausellLab/CelliD
     
     
     
