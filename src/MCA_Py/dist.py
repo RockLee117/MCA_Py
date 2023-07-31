@@ -30,13 +30,13 @@ the closer a gene g is to a cell c, the more specific to such a cell it can be c
 input:
     - X: MCA object (defined in mca.py) containing 2 dataframes, one containing cell coordinates and one containing gene coordinates
     - reduction: which dimensionality reduction to use, must be based on MCA.
-    - dims: an integer value that specifies up to which columns to use in the coordinate data frames since there are 50 columns/dimensions. By default will use all 50 columns
-    - features: String vector of feature names to subset feature coordinates. If not specified will take all features available from specified reduction Loading.
-    - cells: String vector of cell names to subset cell coordinates. If not specified will take all cells available from specified reduction Embedding.
+    - dims: a range that specifies which columns to use in the coordinate data frames since there are 50 columns/dimensions. By default will use all 50 columns
+    - features: String vector of feature names (rows) to subset from feature coordinates. If not specified will use all features 
+    - cells: String vector of cell names (rows) to subset from cell coordinates. If not specified will use all cells 
 return:
     - CellGeneDistances: numpy 2d array with genes as rows and cells as columns. Each value represents the distance between gene x and cell y
 """
-def GetDistances(X, reduction = "mca", dims=50, features = None, cells = None):
+def GetDistances(X, reduction = "mca", dims=range(50), features = None, cells = None):
     # features if passed a value should be a list of specific row names (features) as strings that want to use
     if (features is not None):
         X.featuresCoordinates = X.featuresCoordinates.loc[features]
@@ -45,8 +45,8 @@ def GetDistances(X, reduction = "mca", dims=50, features = None, cells = None):
         X.cellsCoordinates = X.cellsCoordinates.loc[cells]
         
     # reduce dimensionality by taking only first dims columns in each coordinate matrix
-    X.featuresCoordinates = X.featuresCoordinates.iloc[:, :dims]
-    X.cellsCoordinates = X.cellsCoordinates.iloc[:, :dims]
+    X.featuresCoordinates = X.featuresCoordinates.iloc[:, dims]
+    X.cellsCoordinates = X.cellsCoordinates.iloc[:, dims]
     
     print("\nCalculating distances between cells and genes...\n")
     #calculate distance between cells and genes

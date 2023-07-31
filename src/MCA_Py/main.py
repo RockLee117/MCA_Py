@@ -91,7 +91,7 @@ result = mca.RunMCA(assay_df)
 # Find DISTANCES between the coordinates of features (genes) and cells
 # CellGeneDistances will be a pandas data frame, 2d matrix containing distances between genes and cells (rows are genes, cells are columns)
 CellGeneDistances = dist.GetDistances(result)
-#CellGeneDistances = dist.GetDistances(result, features=result.featuresCoordinates.index.tolist()[:10], cells=result.cellsCoordinates.index.tolist()[:50], dims=30)
+#CellGeneDistances = dist.GetDistances(result, features=result.featuresCoordinates.index.tolist()[:10], cells=result.cellsCoordinates.index.tolist()[:50], dims=range(30))
 
 print(CellGeneDistances)
 
