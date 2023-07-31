@@ -44,8 +44,8 @@ def MCAStep1(X):
     FM = np.concatenate((AM, 1 - AM), axis=0).astype('float64')
     AM = None
     total = np.sum(FM)
-    colsum = np.sum(FM, axis=0)
-    rowsum = np.sum(FM, axis=1)
+    colsum = np.sum(FM, axis=0) # d_c -> vector containing sum of each column
+    rowsum = np.sum(FM, axis=1) # d_r -> vector containing sum of each row
     for index in range(len(rowsum)): # iterate the rows
         FM[index] /= np.sqrt(colsum)
         FM[index] = np.nan_to_num(FM[index]) # turns nan values to 0 in case where a number is divided by 0
@@ -55,7 +55,7 @@ def MCAStep1(X):
     Dc = 1/(np.sqrt(rowsum/total))
     Dc = np.nan_to_num(Dc) 
     Dc = np.reshape(Dc, (np.shape(Dc)[0], 1))# turn Dc into a column vector 
-    return {"Z": FM , 
+    return {"Z": FM , # Z is S, matrix of standardized relative frequencies?
             "Dc": Dc} 
 
 """
@@ -82,18 +82,3 @@ def MCAStep2(Z, V, Dc):
     cellsCoordinates = np.sqrt(AZcol) * AV
     return {"cellsCoordinates": cellsCoordinates,
             "featuresCoordinates": FeaturesCoordinates[ :int(np.shape(FeaturesCoordinates)[0]/2)] }
-
-
-######### Personal Testing ########
-# X = np.arange(1,26).reshape(5,5).astype('float64')
-# result = MCAStep1(X) 
-# print(result["Z"])
-# print(result["Dc"])
- 
-# Z = np.arange(1,26).reshape(5,5).astype('float64')
-# V = np.arange(1,26).reshape(5,5).astype('float64')
-# Dc = np.arange(1,6).astype('float64').reshape(5,1)
-
-# X = MCAStep2(Z,V,Dc)
-# print(X["cellsCoordinates"])
-# print(X["featuresCoordinates"])
